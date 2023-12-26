@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>评论回车发布</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/comment.css">
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <div class="container-fluid" style="background-color: rgba(0, 0, 0, 0.613);">
+        <nav class="navbar navbar-expand-sm" style="width: 82%; margin: 0 auto; height: 80px;">
+            <a class="navbar-brand" href="#" style="margin-right: 50px;">
+                <img src="./image/logo.webp" alt="" srcset="" height="45">
+            </a>
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
+                data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">游戏资料<br>
+                            <span>DATA</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">内容中心<br>
+                            <span>CONTENTS</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">赛事中心<br>
+                            <span>MATCH</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">玩家支持<br>
+                            <span>PLAYER</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="active" href="#">社区互动<br>
+                            <span style="border: none;">COMMUNTY</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">IP新游<br>
+                            <span>GAMES</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <img src="./image/评论区indexbg.webp" alt="" style="width: 100%;position: fixed;">
+    <!-- 遮罩层 -->
+    <div class="container-fluid" id="mask"></div>
+    <!-- 轮播字体 -->
+    <h2 id="h2">
+        <p>亲爱的召唤师！终于等到你了！</p>
+        <p>这是你第一次进入我自己做的网址！</p>
+        <p>很荣幸能被你看见！</p>
+        <p>今年是 2023 年，是王者荣耀的 7 周年生日!</p>
+        <p>希望我们都能越来越好！</p>
+        <p>能跟你一起度过这一天我真的很开心！</p>
+        <p>不管你是谁，能看见这里的都我都真心祝福你每天都开开心心！快快乐乐！</p>
+        <p>心想事成！万事如意！</p>
+    </h2>
+    <!-- 主体内容区域 -->
+    <div class="container-fluid" style=" position: relative;top:50px;background-color: black">
+        <div class="container" id="header-title">
+            <div class="row">
+                <div class="herder-img">
+                    <div style="background: url(./image/最新皮肤/head.webp) center center;background-size: contain;width: 120px;height: 97%;border-radius: 50%;"></div>
+                </div>
+             </div>
+             <h3>最新皮肤</h3>
+             <div class="row" style="width: 90%;margin: 0 auto;">
+                <div class="col-4">
+                    <div class="card" style="width: 100%;">
+                        <img src="./image/最新皮肤/周瑜.webp" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">周瑜变身节日使者，让童话照进现实</h5>
+                            <p class="card-text">雪夜绮缘 - 周瑜</p>
+                            <p class="card-text"><small class="text-muted">2023 / 12 / 22</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="card" style="width: 100%;">
+                        <img src="./image/最新皮肤/程咬金.webp" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">程咬金携小鹿伙伴而至，为你带来缤纷礼物</h5>
+                            <p class="card-text">乱动絮语 - 程咬金</p>
+                            <p class="card-text"><small class="text-muted">2023 / 12 / 24</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="card" style="width: 100%;">
+                        <img src="./image/最新皮肤/蒙犽.webp" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">蒙犽6元秒杀皮肤</h5>
+                            <p class="card-text">百解令 - 蒙犽</p>
+                            <p class="card-text"><small class="text-muted">2023 / 12 / 15</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="card" style="width: 100%;">
+                        <img src="./image/最新皮肤/后羿.webp" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">数学天才的精准之弓，必将百发百中</h5>
+                            <p class="card-text">完美运算 - 后羿</p>
+                            <p class="card-text"><small class="text-muted">2023 / 12 / 16</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="card" style="width: 100%;">
+                        <img src="./image/最新皮肤/孙膑.webp" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">动物乐手和小音符们一起奏响美妙乐章</h5>
+                            <p class="card-text">小动物乐园 - 孙膑</p>
+                            <p class="card-text"><small class="text-muted">2023 / 12 / 01</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="card" style="width: 100%;">
+                        <img src="./image/最新皮肤/姜子牙.webp" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">姜子牙身着色彩明丽的户外运动休闲装</h5>
+                            <p class="card-text">闲日渔趣</p>
+                            <p class="card-text"><small class="text-muted">2023 / 11 / 03</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="card" style="width: 100%;">
+                        <img src="./image/最新皮肤/曹操.webp" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">网球界的传奇人物登场，强势吸引全场目光</h5>
+                            <p class="card-text">决胜大满贯</p>
+                            <p class="card-text"><small class="text-muted">2023 / 11 / 11</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="card" style="width: 100%;">
+                        <img src="./image/最新皮肤/甄姬.webp" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">温柔重情的甄姬，变身孔雀公主，化雀起舞</h5>
+                            <p class="card-text">至美 - 化雀舞 - 甄姬</p>
+                            <p class="card-text"><small class="text-muted">2023 / 10 / 28</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="card" style="width: 100%;">
+                        <img src="./image/最新皮肤/西施.webp" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">如水灵动的西施化身为歌仙，乘鲤飞仙</h5>
+                            <p class="card-text">至美 - 乘鲤谣 - 甄姬</p>
+                            <p class="card-text"><small class="text-muted">2023 / 10 / 28</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="card" style="width: 100%;">
+                        <img src="./image/最新皮肤/阿古朵.webp" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">王者荣耀八周年限定皮肤</h5>
+                            <p class="card-text">江河有灵 - 阿古朵</p>
+                            <p class="card-text"><small class="text-muted">2023 / 10 / 20</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="card" style="width: 100%;">
+                        <img src="./image/最新皮肤/大乔.webp" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">时之奇旅新皮肤，漫画主角大乔重获新生</h5>
+                            <p class="card-text">时之奇旅 - 大乔</p>
+                            <p class="card-text"><small class="text-muted">2023 / 10 / 13</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="card" style="width: 100%;">
+                        <img src="./image/最新皮肤/鲁班七号.webp" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">时之奇旅新皮肤，漫画编辑鲁班七号跨越次元</h5>
+                            <p class="card-text">时之奇旅 - 鲁班七号</p>
+                            <p class="card-text"><small class="text-muted">2023 / 10 / 13</small></p>
+                        </div>
+                    </div>
+                </div>
+             </div>
+        </div>
+    </div>
+
+    <!-- 评论区 -->
+    <div class="container-fluid" id="comment">
+        <!-- 显示区域 -->
+        <div class="wrapper">
+            <i class="avatar" style="margin-right: 20px;"></i>
+            <textarea id="tx" placeholder="留下你的足迹" rows="2" maxlength="200"></textarea>
+            <button>发布</button>
+        </div>
+        <!-- 字体提示 -->
+        <div class="wrapper">
+            <span class="total">0/200字</span>
+        </div>
+        <!-- 评论位置 -->
+        <div class="list">
+            <div class="item">
+                <!--
+                    所要添加评论的样式结构 
+                    <i class="avatar"></i>
+                    <div class="info">
+                        <p class="name">发表人的名字：浩平凡的梦</p>
+                        <p class="text">评论内容</p>
+                        <p class="time">当前时间</p>
+                    </div>
+                -->
+            </div>
+        </div>
+    </div>
+    <script src="./js/jQuery.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/comment.js"></script>
+
+</body>
+
+</html>

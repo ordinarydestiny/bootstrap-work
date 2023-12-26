@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tap栏切换</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+            font-family: "宋体";
+        }
+        body{
+            background-image: url(./image/wz.jpg);
+            background-repeat: no-repeat;
+        }
+        /* 总盒子 */
+        .wrap{
+            width: 950px;
+            height: 400px;
+            margin: 150px auto;
+            position: relative;
+        }
+        /* 左边展示 */
+        .wrap .index{
+            width: 650px;
+            height: 100%;
+            position: relative;
+        }
+        /* 能看见的图片 */
+        .wrap .index .image{
+            width: 650px;
+            height: 350px;
+            overflow: hidden;
+        }
+        /* 显示五张图片 */
+        .wrap .index .image .box{
+            width: calc(7 * 100%);
+            position: relative;
+            right: 100%;
+            height: 100%;
+            transition: all 0.5s ease 0s;
+        }
+        .wrap .index .image .box>li{
+            width: calc(100% / 7);
+            height: 100%;
+            float: left;
+        }
+        .wrap .index .image .box>li>a>img{
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 按钮控制左右切换 */
+        .wrap .index .image>button{
+            position: absolute;
+            top: calc(50% - 30px);
+            font-size: 19px;
+            width: 30px;
+            height: 60px;
+            border: none;
+            cursor: pointer;
+            background-color: transparent;
+            color: transparent;
+            transition: all 1.5s ease 0s;
+        }
+        /* 右侧按钮 */
+        .right{
+            right: 0;
+        }
+        /* 悬浮显示左右两边的按钮 */
+        .wrap>.index>.image:hover button{
+            background-color: rgba(203, 246, 255, 0.605);
+            color: black;
+        }
+
+        /* 下面的点击切换图片 */
+        .wrap .index .image .switch_img{
+            display: flex;
+            position: absolute;
+            width: 100%;
+            height: 50px;
+            bottom: 0;
+            background-color: rgb(32, 25, 25);
+        }
+
+        /* 下面的文字盒子 */
+        .wrap .index .image .switch_img>li{
+            width: 20%;
+            text-align: center;
+            line-height: 50px;
+            box-sizing: border-box;
+            border: 0.5px solid black;
+            cursor: pointer;
+            color: white;
+            letter-spacing: 2px;
+            font-family: "宋体";
+        }
+        .wrap .index .image .switch_img>li:hover{
+            color: yellow;
+            background-color: rgba(255, 255, 255, 0.345);
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        
+    </div>
+
+    <script src="./js/jQuery.js"></script>
+    <script>
+        // 获取整个图片区域
+        let img_all = $('.box');
+        // 给下面的注册点击切换事件
+        let img_btn = $('.switch_img>li')
+        // 给每一个小的分别注册点击事件
+        let img_index = 0;
+        $('.switch_img>li').each((index,item) => {
+            $(item).click(() => {
+                // 去除不需要的样式
+                $(img_btn[img_index]).removeClass('color');
+                img_index = index;
+                 // 图片也对应改变所要显示的内容 并 添加所需要的样式
+                $(img_btn[img_index]).toggleClass('color');
+                $(img_all).css({transform:`translateX(-${index * (4550 / 7)}px)`});
+
+                // 点击下面也可以恢复过度效果
+                $(img_all).removeClass('remove');
+                $(img_all).addClass('restore');
+                // 清空定时器,每次点击的时候都清空定时器，让每次轮播的速度都相同
+                clearInterval(time_right)
+                // 重新加载定时器
+                time_right = setInterval(()=>{
+                    btn(false)
+                },2000)
+            });
+        });
+
+        // 为两个按钮分别注册对应事件
+        // 左按钮
+        $('.left').click(() => {
+            btn(true);
+            // 清空定时器,每次点击的时候都清空定时器，让每次轮播的速度都相同
+            clearInterval(time_right)
+            // 重新加载定时器
+            time_right = setInterval(()=>{
+                btn(false)
+            },2000)
+        });
+        // 右按钮
+        $('.right').click(() => {
+            btn(false);
+            // 清空定时器,每次点击的时候都清空定时器，让每次轮播的速度都相同
+            clearInterval(time_right);
+            // 重新加载定时器
+            time_right = setInterval(()=>{
+                btn(false)
+            },2000)
+        });
+        // 自动轮播，默认向右边轮播，每两秒执行一次
+        let time_right = setInterval(()=>{
+            btn(false)
+        },2000)
+        
+        // 左右两个按钮公用函数代码
+        function btn(bool){
+            // 移除上一个的对应样式
+            $(img_all).removeClass('remove');
+            $(img_btn[img_index]).removeClass('color');
+            // true则执行左按钮，false则执行右侧按钮
+            bool ? img_index-- : img_index++;
+            $(img_all).css({transform:`translateX(${-img_index * (4550 / 7)}px)`});
+            // 注意第一张图片
+            if(img_index < 0){
+                setTimeout(() => {
+                    // 无缝新街过度
+                    $(img_all).addClass('remove');
+                    $(img_all).css({transform:`translateX(${-img_index * (4550 / 7)}px)`});
+                },500);
+                img_index = 4;
+            };
+
+            // 注意最后一张图片
+            if(img_index > 4){
+                setTimeout(() => {
+                    // 移除过度效果
+                    $(img_all).addClass('remove');
+                    $(img_all).css({transform:`translateX(${-img_index * (4550 / 7)}px)`});
+                },500);
+                img_index = 0;
+            }
+            // 添加对应样式
+            $(img_btn[img_index]).addClass('color');
+        }
+
+                
+        // 导航栏的样式操作
+        let nav = $('nav>.nav>li');
+        // 获取视图信息
+        let show_message = $('.wrap .message .show .content .content_all')
+        // 默认从索引值为0开始
+        let num = 0;
+        // 悬浮每一个跳转到当前所需要的
+        nav.each((index,item) => {
+            item.onmouseover = () => {
+                // 前面显示的文字
+                if(index < 4){
+                    $(nav[num]).toggleClass('add_color');
+                    num = index
+                    $('.wrap .message .show .content .content_all').css({transform:`translateX(calc(${index} * (-100% / 4))`});
+                    $(nav[num]).toggleClass('add_color');
+                    $('.text').css({transform:`translateX(calc(${num} * (-100% / 4))`});
+                    // 清空定时器
+                    clearInterval(time_message)
+                    // 重新加载定时器
+                    time_message = setInterval(()=>{
+                        show();
+                    },3000)
+                }else{
+                    // 点击更多则跳转另一个页面
+                    // 这里默认不跳转
+                }
+            }
+        });
+
+        // 每次也是默认向右
+        let time_message = setInterval(()=>{
+            show();
+        },3000)
+        // 右侧定时器
+        function show(){
+            // 移除对应样式
+            $(nav[num]).toggleClass('add_color');
+            num++
+            // 判断极端情况
+            if(num > 3){
+                num = 0
+            }
+            // 添加对应样式
+            $('.wrap .message .show .content .content_all').css({transform:`translateX(calc(${num} * (-100% / 4))`});
+            $('.text').css({transform:`translateX(calc(${num} * (-100% / 4))`});
+            $(nav[num]).toggleClass('add_color');
+        }
+
+
+        // 移入暂停
+        $('.content_all').mouseenter(() => {
+            // 清空定时器
+            clearInterval(time_message)
+        })  
+        
+        // 继续轮播
+        $('.content_all').mouseleave(() => {
+            // 重新加载定时器
+            time_message = setInterval(()=>{
+               show();
+            },3000)
+        })       
+    </script>
+</body>
+</html>
